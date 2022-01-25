@@ -48,6 +48,9 @@ public class Room {
     public String getDescription() {
         return description;
     }
+    public String getLongDescription(){
+        return "You are "+description+"\nExits: "+existsToString();
+    }
 
     public Room getExit(String direction) {
         Room Exit=null;
