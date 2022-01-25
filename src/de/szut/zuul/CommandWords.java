@@ -15,15 +15,21 @@ public class CommandWords
 {
     // a constant array that holds all valid command words
     private static final String[] validCommands = {
-        "go", "quit", "help"
+        "go", "quit", "help","look"
     };
 
     /**
      * Constructor - initialise the command words.
      */
-    public CommandWords()
-    {
-        // nothing to do at the moment...
+    public String showAll() {
+        StringBuilder commandString = new StringBuilder();
+        for (String word:validCommands){
+            if (commandString.length()>0){
+                commandString.append(", ");
+            }
+            commandString.append(word);
+        }
+        return commandString.toString();
     }
 
     /**
