@@ -18,6 +18,7 @@ import java.util.HashMap;
 public class Room {
     private String description;
     private HashMap<String, Room>exitMap=new HashMap<String, Room>();
+    private HashMap<String, Item>itemMap=new HashMap<String, Item>();
 
     /**
      * Create a room described "description". Initially, it has
@@ -43,13 +44,26 @@ public class Room {
     }
 
     /**
+     *
+     * Places an item in the Room
+     * @param item new Item
+     */
+    public void dropItem(Item item){
+        itemMap.put(item.getName(),item);
+    }
+
+    /**
      * @return The description of the room.
      */
     public String getDescription() {
         return description;
     }
     public String getLongDescription(){
-        return "You are "+description+"\nExits: "+existsToString();
+        String output="You are "+description+"\nExits: "+existsToString();
+        if (!itemMap.isEmpty()){
+            output = output+"\nItems in this room:\n"+itemList();
+        }
+        return output;
     }
 
     public Room getExit(String direction) {
@@ -68,6 +82,20 @@ public class Room {
             existsList.append(direction);
         }
         return existsList.toString();
+    }
+
+    /**
+     *
+     */
+    public String itemList(){
+        StringBuilder itemList = new StringBuilder("");
+        for (String name:itemMap.keySet()) {
+            if (itemList.length() > 0) {
+                itemList.append("\n");
+            }
+            itemList.append(itemMap.get(name).toString());
+        }
+        return itemList.toString();
     }
 
 }

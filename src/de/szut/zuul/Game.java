@@ -74,9 +74,19 @@ public class Game
         cave.setExit("up",sacrificialSite);
         cave.setExit("south",beach);
         cave.setExit("east",secretPassage);
-
         beach.setExit("north",cave);
         wizzardRoom.setExit("down",templePyramid);
+
+        //place initial items
+        marketsquare.dropItem(new Item("bow","a wooden bow",.5));
+        cave.dropItem(new Item("treasure","a small chest filled with coins",7.5));
+        wizzardRoom.dropItem(new Item("arrows", "a quiver with different arrows",1));
+        jungle.dropItem(new Item("herb","a healing herb",.5));
+        jungle.dropItem(new Item("cocoa","a small cocoa tree", 5));
+        sacrificialSite.dropItem(new Item("knife","a big sharp knife",1));
+        hut.dropItem(new Item("spear","a spear and matching sling",5));
+        tavern.dropItem(new Item("food","a hearty meal",.5));
+        cellar.dropItem(new Item("jewellery", "a pretty headdress",1));
 
         currentRoom = marketsquare;  // start game on marketsquare
     }
